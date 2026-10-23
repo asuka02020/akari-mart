@@ -1,0 +1,5 @@
+# local demo videos are published as GitHub Release assets instead of git objects
+videos/
+*.zip
+.DS_Store
+Thumbs.db

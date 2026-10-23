@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#05070c">
+<title>箱庭 DIORAMA · 雨夜便利店 / 樱花车站</title>
+<meta name="description" content="纯代码程序化生成的 WebGL 立体箱庭：雨夜便利店与樱花车站。拖拽旋转、滚轮缩放、电影巡游。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0d14'/%3E%3Crect x='10' y='22' width='44' height='26' fill='%23f2efe6'/%3E%3Crect x='10' y='22' width='44' height='7' fill='%231f7a4c'/%3E%3Crect x='17' y='33' width='12' height='15' fill='%23ffce8f'/%3E%3Cpath d='M40 37l2.2 5 5 .5-3.8 3.4 1.1 5-4.5-2.7-4.5 2.7 1.1-5-3.8-3.4 5-.5z' fill='%23f2a93b'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="scene-night">
+
+<canvas id="stage" aria-label="立体箱庭三维场景，可拖拽旋转"></canvas>
+<div class="fx fx-vignette" aria-hidden="true"></div>
+<div class="fx fx-grain" aria-hidden="true"></div>
+
+<div id="boot" class="boot">
+  <div class="boot__mark">箱庭</div>
+  <div class="boot__bar"><i></i></div>
+  <div class="boot__status">BUILDING DIORAMA</div>
+</div>
+
+<header class="top">
+  <div class="brand">
+    <span class="brand__kicker">PROCEDURAL DIORAMA · WEBGL</span>
+    <h1 id="brandTitle">雨夜便利店</h1>
+    <p id="brandSub">RAINY NIGHT · AKARI MART</p>
+  </div>
+  <div class="hud" id="hud">
+    <div class="hud__row"><span>SCENE</span><b id="hudScene">01 / NIGHT</b></div>
+    <div class="hud__row"><span>CLOCK</span><b id="hudClock">22:47</b></div>
+    <div class="hud__row"><span>WEATHER</span><b id="hudWeather">雨 · 12mm/h</b></div>
+    <div class="hud__note" id="hudNote">深夜营业中</div>
+  </div>
+</header>
+
+<aside class="panel" id="panel">
+  <div class="panel__head">
+    <span class="panel__title">场景 / SCENE</span>
+    <button class="iconbtn" id="collapseBtn" title="收起面板" aria-label="收起面板">−</button>
+  </div>
+  <div class="sceneTabs" id="sceneTabs"></div>
+  <div class="panel__body" id="panelBody">
+    <div class="panel__label">镜头 / CAMERA</div>
+    <div class="views" id="views"></div>
+
+    <div class="panel__label">模式 / MODE</div>
+    <div class="toggles">
+      <label class="switch">
+        <input type="checkbox" id="autoRotate">
+        <span class="switch__track"><i></i></span>
+        <span class="switch__text">自动旋转</span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="tourToggle">
+        <span class="switch__track"><i></i></span>
+        <span class="switch__text">电影巡游</span>
+      </label>
+    </div>
+
+    <div id="paramsHost"></div>
+
+    <div class="panel__foot">
+      <button class="btn" id="shotBtn">保存画面</button>
+      <button class="btn btn--ghost" id="hideBtn">隐藏界面</button>
+    </div>
+  </div>
+</aside>
+
+<button class="restore" id="restoreBtn" hidden>控制台</button>
+
+<footer class="hint" id="hint">
+  <span><b>拖拽</b> 旋转</span><span><b>滚轮</b> 缩放</span><span><b>双击</b> 复位</span><span><b>空格</b> 巡游</span>
+</footer>
+
+<div class="tourbar" id="tourbar" aria-hidden="true"><i></i></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/core.js"></script>
+<script src="js/scene-night.js"></script>
+<script src="js/scene-sakura.js"></script>
+<script src="js/renderer.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
